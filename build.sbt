@@ -6,15 +6,15 @@ import scoverage.ScoverageKeys
 // 'git checkout develop; sbt publishLocal' to publish SNAPSHOT versions of these projects.
 
 // All Twitter library releases are date versioned as YY.MM.patch
-val releaseVersion = "19.2.0-SNAPSHOT"
+val releaseVersion = "19.2.1-SNAPSHOT"
 
 lazy val versions = new {
   val slf4j = "1.7.21"
   val libthrift = "0.10.0"
 }
 
-def util(which: String) = "com.twitter" %% ("util-"+which) % releaseVersion
-def finagle(which: String) = "com.twitter" %% ("finagle-"+which) % releaseVersion
+def util(which: String) = "com.twitter" %% ("util-"+which) % "19.2.0-SNAPSHOT"
+def finagle(which: String) = "com.twitter" %% ("finagle-"+which) % "19.2.0-SNAPSHOT"
 
 val compileThrift = TaskKey[Seq[File]](
   "compile-thrift", "generate thrift needed for tests")
@@ -313,7 +313,7 @@ lazy val scroogeSbtPlugin = Project(
 ).settings(
   scroogeSbtPluginSettings: _*
 ).settings(
-  scalaVersion := "2.10.6",
+  scalaVersion := "2.12.7",
   buildInfoKeys := Seq[BuildInfoKey](name, version, scalaVersion, sbtVersion),
   buildInfoPackage := "com.twitter",
   sbtPlugin := true,
